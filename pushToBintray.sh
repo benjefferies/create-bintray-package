@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Required: BINTRAY_TOKEN
 # Required: BINTRAY_USER
 # Required: BINTRAY_ORGANISATION
