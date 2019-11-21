@@ -2,6 +2,7 @@
 
 # Required: BINTRAY_TOKEN
 # Required: BINTRAY_USER
+# Required: BINTRAY_ORGANISATION
 # Required: BINTRAY_REPO
 # Required: PACKAGE_NAME
 # Required: PACKAGE_DESCRIPTION
@@ -21,7 +22,7 @@ main() {
 
 package_exists() {
   echo "Checking if package ${PACKAGE_NAME} exists..."
-  package_exists=$([ $(${CURL} --write-out %{http_code} --silent --output /dev/null -X GET  ${API}/packages/${BINTRAY_USER}/${BINTRAY_REPO}/${PACKAGE_NAME})  -eq 200 ] && echo 0 || echo 1)
+  package_exists=$([ $(${CURL} --write-out %{http_code} --silent --output /dev/null -X GET  ${API}/packages/${BINTRAY_ORGANISATION}/${BINTRAY_REPO}/${PACKAGE_NAME})  -eq 200 ] && echo 0 || echo 1)
   echo "Package ${PACKAGE_NAME} exists? y:0/N:1 ${package_exists}"
   return "${package_exists}"
 }
@@ -36,7 +37,7 @@ create_package() {
   \"vcs_url\": [\"${PACKAGE_URL}\"]
   }"
 
-  ${CURL} -X POST -u${BINTRAY_USER}:${BINTRAY_TOKEN} -d "${data}" ${API}/packages/${BINTRAY_USER}/${BINTRAY_REPO}
+  ${CURL} -X POST -u${BINTRAY_USER}:${BINTRAY_TOKEN} -d "${data}" ${API}/packages/${BINTRAY_ORGANISATION}/${BINTRAY_REPO}
 }
 
 main "$@"
