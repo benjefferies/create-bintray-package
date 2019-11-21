@@ -1,5 +1,7 @@
 # Create Bintray Package
-A Github action to create a Bintray package
+A Github action to create a Bintray package.
+
+Example of usage can be found https://github.com/benjefferies/maven-bintray-github-actions
 
 
 ## Inputs
