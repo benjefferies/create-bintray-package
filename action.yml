@@ -36,6 +36,7 @@ runs:
   env:
     BINTRAY_USER: ${{ inputs.bintray-user }}
     BINTRAY_TOKEN: ${{ inputs.bintray-token }}
+    BINTRAY_ORGANISATION: ${{ inputs.owner }}
     BINTRAY_REPO: ${{ inputs.repo }}
     PACKAGE_NAME: ${{ inputs.package-name }}
     PACKAGE_DESCRIPTION: ${{ inputs.package-description }}
