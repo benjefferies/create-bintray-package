@@ -14,7 +14,7 @@ set -e
 API=https://api.bintray.com
 
 main() {
-  CURL="curl -u${BINTRAY_USER}:${BINTRAY_TOKEN} -H Content-Type:application/json -H Accept:application/json"
+  CURL="curl --fail -u${BINTRAY_USER}:${BINTRAY_TOKEN} -H Content-Type:application/json -H Accept:application/json"
   if (! package_exists); then
     echo "The package ${PACKAGE_NAME} does not exit. It will be created"
     create_package
