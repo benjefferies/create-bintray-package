@@ -7,16 +7,16 @@ Example of usage can be found https://github.com/benjefferies/maven-bintray-gith
 ## Inputs
 ```
   bintray-user:
-    description: 'Bintray user'
+    description: 'Bintray user used for authentication'
     required: true
   bintray-token:
-    description: 'Bintray access token'
+    description: 'Bintray access token used for authentication'
     required: true
   owner:
-    description: 'The owner or organisation to create the package under'
+    description: 'The bintray owner or organisation to create the package under'
     required: true
   repo:
-    description: 'The repo to create'
+    description: 'The bintray repo to create the package will live under'
     required: true
   package-name:
     description: 'The name of the package to create'
