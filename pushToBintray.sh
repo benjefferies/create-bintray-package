@@ -30,13 +30,17 @@ package_exists() {
 }
 
 create_package() {
+  if [[ "${PACKAGE_URL}" == *"github.com"* ]]; then
+    GITHUB_REPO=$(echo ${PACKAGE_URL} | sed  's/.*github.com\///g')
+  fi
   echo "Creating package ${PACKAGE_NAME}..."
   data="{
   \"name\": \"${PACKAGE_NAME}\",
   \"desc\": \"${PACKAGE_DESCRIPTION}\",
   \"desc_url\": \"${PACKAGE_URL}\",
   \"licenses\": [\"${PACKAGE_LICENSE}\"],
-  \"vcs_url\": [\"${PACKAGE_URL}\"]
+  \"vcs_url\": [\"${PACKAGE_URL}\"],
+  \"github_repo\": [\"${GITHUB_REPO}\"]
   }"
 
   ${CURL} -X POST -u${BINTRAY_USER}:${BINTRAY_TOKEN} -d "${data}" ${API}/packages/${BINTRAY_ORGANISATION}/${BINTRAY_REPO}
